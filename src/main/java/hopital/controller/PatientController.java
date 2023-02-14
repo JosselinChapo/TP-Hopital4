@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import hopital.model.Patient;
 import hopital.repository.PatientRepository;
-import quest.exception.FormateurException;
 
 @Controller
 @RequestMapping("/patient")

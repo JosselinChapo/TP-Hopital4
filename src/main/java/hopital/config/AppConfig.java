@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@ComponentScan("hopital.service")
 @EnableJpaRepositories("hopital.repository")
 @EnableTransactionManagement
 public class AppConfig {
@@ -25,8 +26,8 @@ public class AppConfig {
 		BasicDataSource dataSource=new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/hopital");
+		dataSource.setPassword("root");
+		dataSource.setUrl("jdbc:mysql://localhost:8889/hopital");
 		dataSource.setMaxTotal(10);
 		return dataSource;
 	}
