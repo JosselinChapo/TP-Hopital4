@@ -2,61 +2,47 @@ package hopital.test;
 
 import java.time.LocalDate;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
+import hopital.config.AppConfig;
+import hopital.repository.MedecinRepository;
+import hopital.repository.PatientRepository;
+import hopital.repository.SecretaireRepository;
+import hopital.repository.VisiteRepository;
 import org.junit.jupiter.api.Test;
 
 import hopital.model.Medecin;
 import hopital.model.Patient;
 import hopital.model.Secretaire;
 import hopital.model.Visite;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.transaction.annotation.Transactional;
 
+@SpringJUnitConfig(AppConfig.class)
+@Transactional
+@Rollback
 public class HopitalTest {
+
+	@Autowired private MedecinRepository medecinRepository;
+	@Autowired private PatientRepository patientRepository;
+	@Autowired private SecretaireRepository secretaireRepository;
+	@Autowired private VisiteRepository visiteRepository;
 
 	@Test
 	public void loadData() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("hopital");
 
-		EntityManager em = null;
-		EntityTransaction tx = null;
+		Medecin docBrown = new Medecin("docbrown@backtothefuture.com", "doloreane");
+		medecinRepository.save(docBrown);
 
-		try {
-			em = emf.createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
+		Secretaire laSecretaire = new Secretaire("secret@backtothefuture.com", "Password");
+		secretaireRepository.save(laSecretaire);
 
-			Medecin docBrown = new Medecin("docbrown@backtothefuture.com", "doloreane");
+		Patient marty = new Patient("MacFly", "Marty");
+		patientRepository.save(marty);
 
-			docBrown = em.merge(docBrown);
+		Visite visiteMarty = new Visite(marty, docBrown, 30, 1, LocalDate.now());
+		visiteRepository.save(visiteMarty);
 
-			Secretaire laSecretaire = new Secretaire("secret@backtothefuture.com", "Password");
-
-			laSecretaire = em.merge(laSecretaire);
-
-			Patient marty = new Patient("MacFly", "Marty");
-
-			marty = em.merge(marty);
-
-			Visite visiteMarty = new Visite(marty, docBrown, 30, 1, LocalDate.now());
-			
-			visiteMarty = em.merge(visiteMarty);
-
-			tx.commit();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
-		emf.close();
 	}
 
 }
