@@ -18,7 +18,7 @@ public abstract class Compte {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Version
-	private int version;
+	private Integer version;
 	private String login;
 	private String password;
 
@@ -38,11 +38,11 @@ public abstract class Compte {
 		this.id = id;
 	}
 
-	public int getVersion() {
+	public Integer getVersion() {
 		return version;
 	}
 
-	public void setVersion(int version) {
+	public void setVersion(Integer version) {
 		this.version = version;
 	}
 
