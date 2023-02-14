@@ -7,13 +7,15 @@ import javax.persistence.Entity;
 @DiscriminatorValue("Secretaire")
 public class Secretaire extends Compte {
 
+	public Secretaire(String mail, String password) {
+		super(mail, password);
+		
+	}
+
 	public Secretaire() {
 	}
 
-	public Secretaire(String mail, String password) {
-		super(mail, password);
-
-	}
+	
 
 
 }
