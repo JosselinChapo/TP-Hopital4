@@ -46,7 +46,7 @@ public class SecretaireController {
 
 	private String goForm(Model model, Secretaire secretaire) {
 		model.addAttribute("secretaire", secretaire);
-		return "secretaire/edit";
+		return "secretaire/form";
 	}
 
 	@PostMapping("")

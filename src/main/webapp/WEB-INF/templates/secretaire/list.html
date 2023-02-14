@@ -10,7 +10,7 @@
 <section layout:fragment="monContenu">
 	<div class="container">
 		<div class="card mt-3">
-			<div class="card-header bg-info text-white"><span class="h2">[[#{formateur.list.entete}]]</span></div>
+			<div class="card-header bg-info text-white"><span class="h2"> liste de secretaire</span></div>
 			<div class="card-body">
 				<table class="table table-striped">
 					<thead>
@@ -20,13 +20,13 @@
 						<th>Password</th>
 						<th></th>
 					
-						<th></th>
+
 					</tr>
 					</thead>
 					<tbody>						
 						<tr th:each="secretaire : ${secretaires}">
 							<td th:text="${secretaire.id}"></td>
-							<td>[[${secretaire.mail}]]</td>
+							<td>[[${secretaire.login}]]</td>
 							<td>[[${secretaire.password}]]</td>
 							<td>
 								<div class='btn-group btn-group-sm'>

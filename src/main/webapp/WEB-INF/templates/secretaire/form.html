@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout.html">
 <head>
 <meta charset="UTF-8">
 <title> Editer Secretaire</title>
@@ -16,13 +18,13 @@
 					<div class="form-group">
 						<label for="id">Identifiant:</label> <input type="number"
 							class="form-control" name="id" readonly th:value="${secretaire.id}">
-						<span class="text-danger" th:errors="${formateur.id}"></span>
+
 					</div>
 
 
 					<div class="form-group">
 						<label for="login">Login:</label> <input type="text"
-							class="form-control" name="nom" th:value="${secretaire.nom}">
+							class="form-control" name="login" th:value="${secretaire.login}">
 
 					</div>
 					
