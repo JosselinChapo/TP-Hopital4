@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @SpringJUnitConfig(AppConfig.class)
 @Transactional
-@Rollback
 public class HopitalTest {
 
 	@Autowired private MedecinRepository medecinRepository;
