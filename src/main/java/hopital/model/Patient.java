@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Patient {
@@ -19,6 +20,7 @@ public class Patient {
 	private String numeroSecuriteSociale;
 	@Column(length = 50, nullable = false)
 	private String nom;
+	@NotBlank
 	@Column(length = 50, nullable = false)
 	private String prenom;
 
